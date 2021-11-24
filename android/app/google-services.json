@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "868955852034",
+    "project_id": "llapreview-dev",
+    "storage_bucket": "llapreview-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868955852034:android:bf9a569f337da3ef13061b",
+        "android_client_info": {
+          "package_name": "com.bahasabagus.llapreview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868955852034-42okcqfu8jen68htvn5gpudjkuo23eim.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bahasabagus.llapreview",
+            "certificate_hash": "2146a8a0a4ea89467c25ae4c168bd0605d7b6c28"
+          }
+        },
+        {
+          "client_id": "868955852034-a637t4609t72ambh2ueraas4ul3mg82d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2acg_29716mvtpHjSOyrW6NqjZiA-nIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868955852034-a637t4609t72ambh2ueraas4ul3mg82d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "868955852034-u7n1kuqvvgqgbvttiqmc61kspkcjkhop.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bahasabagus.llapreview"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
