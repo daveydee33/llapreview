@@ -13,9 +13,13 @@ class Home extends StatelessWidget {
         stream: AuthService().userStream,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text('loading');
+            return const Text('loading', textDirection: TextDirection.ltr);
           } else if (snapshot.hasError) {
-            return const Center(child: Text('error'));
+            return const Center(
+                child: Text(
+              'error',
+              textDirection: TextDirection.ltr,
+            ));
           } else if (snapshot.hasData) {
             return const Topics();
           } else {

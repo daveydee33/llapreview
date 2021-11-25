@@ -51,7 +51,7 @@ class LoginButton extends StatelessWidget {
     return Container(
         margin: const EdgeInsets.only(bottom: 10),
         child: ElevatedButton.icon(
-          label: Text(text), // why?
+          label: Text(text),
           icon: Icon(
             icon,
             color: Colors.white,
