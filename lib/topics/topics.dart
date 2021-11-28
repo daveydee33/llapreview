@@ -22,16 +22,18 @@ class Topics extends StatelessWidget {
         } else if (snapshot.hasData) {
           var topics = snapshot.data!;
           return Scaffold(
-            appBar: AppBar(title: Text('Topics')),
-            body: GridView.count(
-              crossAxisCount: 2,
-              children: List.generate(100, (index) {
-                return Center(
-                  child: Text('Item $index'),
-                );
-              }),
+            appBar: AppBar(
+              title: const Text('Topics'),
+              backgroundColor: Colors.orange[900],
             ),
-            bottomNavigationBar: BottomNavBar(),
+            body: GridView.count(
+              primary: false,
+              padding: const EdgeInsets.all(20.0),
+              crossAxisSpacing: 10.0,
+              crossAxisCount: 2,
+              children: topics.map((topic) => Text(topic.title)).toList(),
+            ),
+            bottomNavigationBar: const BottomNavBar(),
           );
         } else {
           return const Text('No topics found. Check database.');
