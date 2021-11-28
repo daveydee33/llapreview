@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart'
-import 'package:rxdart/rxdart.dart'
-import 'package:llapreview/services/auth.dart'
-import 'package:llapreview/services/models.dart'
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:rxdart/rxdart.dart';
+import 'package:llapreview/services/auth.dart';
+import 'package:llapreview/services/models.dart';
 
 class FirestoreService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -35,7 +35,7 @@ class FirestoreService {
     });
   }
 
-    /// Updates the current user's report document after completing quiz
+  /// Updates the current user's report document after completing quiz
   Future<void> updateUserReport(Quiz quiz) {
     var user = AuthService().user!;
     var ref = _db.collection('reports').doc(user.uid);
