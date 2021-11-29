@@ -4,6 +4,7 @@ import 'package:llapreview/services/models.dart';
 import 'package:llapreview/shared/bottom_nav.dart';
 import 'package:llapreview/shared/loading.dart';
 import 'package:llapreview/shared/error.dart';
+import 'package:llapreview/topics/topic_item.dart';
 
 class Topics extends StatelessWidget {
   const Topics({Key? key}) : super(key: key);
@@ -24,14 +25,18 @@ class Topics extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: const Text('Topics'),
-              backgroundColor: Colors.orange[900],
+              backgroundColor:
+                  // Colors.orange[900],
+                  // Colors.deepOrange[700],
+                  // Colors.deepOrange[800],
+                  Colors.deepOrange[900],
             ),
             body: GridView.count(
               primary: false,
               padding: const EdgeInsets.all(20.0),
               crossAxisSpacing: 10.0,
               crossAxisCount: 2,
-              children: topics.map((topic) => Text(topic.title)).toList(),
+              children: topics.map((topic) => TopicItem(topic: topic)).toList(),
             ),
             bottomNavigationBar: const BottomNavBar(),
           );
