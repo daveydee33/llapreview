@@ -8,6 +8,6 @@ var appRoutes = {
   '/': (context) => const Home(),
   '/login': (context) => const Login(),
   '/topics': (context) => const Topics(),
-  '/profile': (context) => const Profile(),
+  '/profile': (context) => const ProfileScreen(),
   '/about': (context) => const About(),
 };
