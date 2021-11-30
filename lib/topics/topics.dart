@@ -26,11 +26,14 @@ class Topics extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: const Text('Topics'),
-              backgroundColor:
-                  // Colors.orange[900],
-                  // Colors.deepOrange[700],
-                  // Colors.deepOrange[800],
-                  Colors.deepOrange[900],
+              backgroundColor: Colors.orange[800],
+              // Colors.orange[900],
+              // Colors.orangeAccent[700],
+              // Colors.amber[900],
+              // Colors.yellow[900],
+              // Colors.deepOrange[700],
+              // Colors.deepOrange[800],
+              // Colors.deepOrange[900],
             ),
             body: GridView.count(
               primary: false,
