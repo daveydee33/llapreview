@@ -5,6 +5,7 @@ import 'package:llapreview/shared/bottom_nav.dart';
 import 'package:llapreview/shared/loading.dart';
 import 'package:llapreview/shared/error.dart';
 import 'package:llapreview/topics/topic_item.dart';
+import 'package:llapreview/topics/drawer.dart';
 
 class Topics extends StatelessWidget {
   const Topics({Key? key}) : super(key: key);
@@ -39,6 +40,7 @@ class Topics extends StatelessWidget {
               children: topics.map((topic) => TopicItem(topic: topic)).toList(),
             ),
             bottomNavigationBar: const BottomNavBar(),
+            drawer: TopicDrawer(topics: topics),
           );
         } else {
           return const Text('No topics found. Check database.');
