@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:llapreview/services/models.dart';
+import 'package:llapreview/shared/progress_bar.dart';
 import 'package:llapreview/topics/drawer.dart';
 
 class TopicItem extends StatelessWidget {
@@ -47,7 +48,7 @@ class TopicItem extends StatelessWidget {
                   ),
                 ),
               ),
-              // Flexible(child: TopicProgress(topic: topic)),
+              Flexible(child: TopicProgress(topic: topic)),
             ],
           ),
         ),
