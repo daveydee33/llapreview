@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:llapreview/routes.dart';
 import 'package:llapreview/services/services.dart';
+import 'package:llapreview/shared/shared.dart';
 import 'package:llapreview/theme.dart';
 
 void main() {
@@ -34,6 +35,7 @@ class _AppState extends State<App> {
       builder: (context, snapshot) {
         // Check for errors
         if (snapshot.hasError) {
+          print('ERROR....');
           return Text(
             'error',
             textDirection: TextDirection.ltr,
@@ -54,10 +56,7 @@ class _AppState extends State<App> {
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return Text(
-          'loading',
-          textDirection: TextDirection.ltr,
-        );
+        return const MaterialApp(home: LoadingScreen());
       },
     );
   }
