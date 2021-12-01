@@ -36,9 +36,8 @@ class _AppState extends State<App> {
         // Check for errors
         if (snapshot.hasError) {
           print('ERROR....');
-          return Text(
-            'error',
-            textDirection: TextDirection.ltr,
+          return Center(
+            child: ErrorMessage(message: snapshot.error.toString()),
           );
         }
 

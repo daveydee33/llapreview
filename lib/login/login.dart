@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:llapreview/services/auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +18,16 @@ class Login extends StatelessWidget {
               size: 150,
             ),
             LoginButton(
+              text: 'Sign In with Google',
+              icon: FontAwesomeIcons.google,
+              color: Colors.blue,
+              loginMethod: AuthService().googleLogin,
+            ),
+            LoginButton(
               icon: FontAwesomeIcons.userNinja,
               text: 'Continue as Guest',
               loginMethod: AuthService().anonLogin,
               color: Colors.deepPurple,
-            ),
-            LoginButton(
-              icon: FontAwesomeIcons.google,
-              text: 'Sign In with Google',
-              loginMethod: AuthService().googleLogin,
-              color: Colors.blue,
             ),
           ],
         ),
@@ -55,7 +55,6 @@ class LoginButton extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       child: ElevatedButton.icon(
-        label: Text(text),
         icon: Icon(
           icon,
           color: Colors.white,
@@ -66,6 +65,7 @@ class LoginButton extends StatelessWidget {
           backgroundColor: color,
         ),
         onPressed: () => loginMethod(),
+        label: Text(text),
       ),
     );
   }

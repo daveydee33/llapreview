@@ -7,6 +7,7 @@ class ErrorMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('ERROR...');
     return Center(
       child: Text(message),
     );

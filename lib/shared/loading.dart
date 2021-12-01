@@ -18,6 +18,8 @@ class LoadingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Loading...');
+
     return const Scaffold(
       body: Center(
         child: Loader(),

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:llapreview/services/firestore.dart';
-import 'package:llapreview/services/models.dart';
-import 'package:llapreview/shared/bottom_nav.dart';
-import 'package:llapreview/shared/loading.dart';
-import 'package:llapreview/shared/error.dart';
-import 'package:llapreview/topics/topic_item.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:llapreview/services/services.dart';
+import 'package:llapreview/shared/shared.dart';
 import 'package:llapreview/topics/drawer.dart';
+import 'package:llapreview/topics/topic_item.dart';
 
-class Topics extends StatelessWidget {
-  const Topics({Key? key}) : super(key: key);
+class TopicsScreen extends StatelessWidget {
+  const TopicsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +23,6 @@ class Topics extends StatelessWidget {
           var topics = snapshot.data!;
           return Scaffold(
             appBar: AppBar(
-              title: const Text('Topics'),
               backgroundColor: Colors.orange[800],
               // Colors.orange[900],
               // Colors.orangeAccent[700],
@@ -34,7 +31,19 @@ class Topics extends StatelessWidget {
               // Colors.deepOrange[700],
               // Colors.deepOrange[800],
               // Colors.deepOrange[900],
+              title: const Text('Topics'),
+              actions: [
+                IconButton(
+                  icon: Icon(
+                    FontAwesomeIcons.userCircle,
+                    color: Colors.pink[
+                        200], // TODO: probably need a better color for this
+                  ),
+                  onPressed: () => Navigator.pushNamed(context, '/profile'),
+                )
+              ],
             ),
+            drawer: TopicDrawer(topics: topics),
             body: GridView.count(
               primary: false,
               padding: const EdgeInsets.all(20.0),
@@ -43,9 +52,9 @@ class Topics extends StatelessWidget {
               children: topics.map((topic) => TopicItem(topic: topic)).toList(),
             ),
             bottomNavigationBar: const BottomNavBar(),
-            drawer: TopicDrawer(topics: topics),
           );
         } else {
+          print('ERROR... no topics in firebase');
           return const Text('No topics found. Check database.');
         }
       },

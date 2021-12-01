@@ -5,9 +5,9 @@ import 'package:llapreview/topics/topics.dart';
 import 'package:llapreview/home/home.dart';
 
 var appRoutes = {
-  '/': (context) => const Home(),
-  '/login': (context) => const Login(),
-  '/topics': (context) => const Topics(),
+  '/': (context) => const HomeScreen(),
+  '/login': (context) => const LoginScreen(),
+  '/topics': (context) => const TopicsScreen(),
   '/profile': (context) => const ProfileScreen(),
-  '/about': (context) => const About(),
+  '/about': (context) => const AboutScreen(),
 };

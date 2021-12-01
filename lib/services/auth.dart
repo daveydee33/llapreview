@@ -32,6 +32,7 @@ class AuthService {
 
       await FirebaseAuth.instance.signInWithCredential(authCredential);
     } on FirebaseAuthException catch (e) {
+      print('ERROR... login exception [google]');
       print(e);
       // handle error
     }
@@ -42,6 +43,7 @@ class AuthService {
     try {
       await FirebaseAuth.instance.signInAnonymously();
     } on FirebaseAuthException catch (e) {
+      print('ERROR... login exception [anonymous]');
       print(e);
       // handle error
     }
