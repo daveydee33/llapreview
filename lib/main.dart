@@ -8,7 +8,16 @@ import 'package:llapreview/theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(App());
+  runApp(
+    /// Providers are above [MyApp] instead of inside it, so that tests
+    /// can use [MyApp] while mocking the providers
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Counter()),
+      ],
+      child: App(),
+    ),
+  );
 }
 
 /// We are using a StatefulWidget such that we only create the [Future] once,

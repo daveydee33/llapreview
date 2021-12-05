@@ -31,7 +31,7 @@ class BottomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            FontAwesomeIcons.list,
+            FontAwesomeIcons.book,
             size: 20,
           ),
           label: 'Words & Phrases',
