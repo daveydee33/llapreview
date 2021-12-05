@@ -12,7 +12,7 @@ class AuthService {
       print('googleUser');
       print(googleUser);
       // googleUser:
-      // GoogleSignInAccount:{displayName: Dave Degeatano, email: dave@slash.co, id: 104623972310985216270, photoUrl: https://lh3.googleusercontent.com/a-/AOh14GgEo5HE6P6lo0WjENziEYJ1rkezj03Qjc6x0_8w=s1337, serverAuthCode: null}
+      // GoogleSignInAccount:{displayName, email, id, photoUrl, serverAuthCode: null}
       if (googleUser == null) return;
 
       final googleAuth = await googleUser.authentication;

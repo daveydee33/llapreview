@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' show Client;
 import 'dart:async';
 // import 'models/item_model.dart';
 import 'dart:convert';
@@ -21,7 +21,8 @@ class Counter with ChangeNotifier, DiagnosticableTreeMixin {
   }
 
   void fetchItems() async {
-    final res = await http
+    final client = Client();
+    final res = await client
         .get(Uri.parse('http://localhost:4001/v1/items?limit=10&page=1'));
     final resItems = json.decode(res.body);
     items = resItems['results']; // or  // items = resItems;
