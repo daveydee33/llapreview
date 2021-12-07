@@ -56,7 +56,7 @@ class ProfileScreen extends StatelessWidget {
         ),
       );
     } else {
-      return const Loader();
+      return const LoadingScreen();
     }
   }
 }
