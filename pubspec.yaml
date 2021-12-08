@@ -43,3 +43,8 @@ flutter:
     - assets/covers/
     - assets/congrats.gif
     - assets/temp/
+    - assets/audio/
+    - assets/audio/A/
+    - assets/audio/B/
+    - assets/audio/C/
+    - assets/audio/D/
