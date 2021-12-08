@@ -8,16 +8,19 @@ class ItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // state
     final items = context.watch<Counter>().items;
+
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (context, int index) {
         return Container(
-            child: Column(
-          children: [
-            ItemCard(items[index]),
-          ],
-        ));
+          child: Column(
+            children: [
+              ItemCard(items[index]),
+            ],
+          ),
+        );
       },
       // scrollDirection: Axis.horizontal,
       // primary: true, /// ???
@@ -45,7 +48,14 @@ class ItemCard extends StatelessWidget {
               style: TextStyle(color: Colors.black.withOpacity(0.6)),
             ),
           ),
-          Image.asset('assets/temp/temp1.jpeg'),
+          Container(
+            // margin: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(20.0),
+            // decoration: BoxDecoration(
+            //   border: Border.all(color: Colors.grey),
+            // ),
+            child: Image.asset('assets/temp/temp1.jpeg'),
+          ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(

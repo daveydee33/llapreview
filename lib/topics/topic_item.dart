@@ -66,6 +66,7 @@ class TopicScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(topic.title), // TODO: Maybe?
         backgroundColor: Colors.transparent,
       ),
       body: ListView(children: [
