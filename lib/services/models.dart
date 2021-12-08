@@ -70,3 +70,29 @@ class Report {
   factory Report.fromJson(Map<String, dynamic> json) => _$ReportFromJson(json);
   Map<String, dynamic> toJson() => _$ReportToJson(this);
 }
+
+class ItemModel {
+  late int id;
+  late String title;
+  // late String description;
+  // late String details;
+  // List<String> audios;
+  // List<String> images;
+  // List examples;
+  // List tags;
+  // List related;
+
+  ItemModel(
+    this.id,
+    this.title,
+    // this.description,
+    // this.details
+  );
+
+  ItemModel.fromJson(Map<String, dynamic> parsedJson) {
+    id = parsedJson['id'];
+    title = parsedJson['title'];
+    // description = parsedJson['attributes']['description'];
+    // details = parsedJson['attributes']['details'];
+  }
+}

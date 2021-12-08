@@ -29,6 +29,13 @@ class BottomNavBar extends StatelessWidget {
           ),
           label: 'Profile',
         ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            FontAwesomeIcons.book,
+            size: 20,
+          ),
+          label: 'Words & Phrases',
+        ),
       ],
       fixedColor: Colors.deepPurple[200],
       onTap: (int idx) {
@@ -42,6 +49,8 @@ class BottomNavBar extends StatelessWidget {
           case 2:
             Navigator.pushNamed(context, '/profile');
             break;
+          case 3:
+            Navigator.pushNamed(context, '/words');
         }
       },
     );

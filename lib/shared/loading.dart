@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Loader extends StatelessWidget {
-  const Loader({Key? key}) : super(key: key);
+class _Loader extends StatelessWidget {
+  const _Loader({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +18,9 @@ class LoadingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Loading...');
-
     return const Scaffold(
       body: Center(
-        child: Loader(),
+        child: _Loader(),
       ),
     );
   }
