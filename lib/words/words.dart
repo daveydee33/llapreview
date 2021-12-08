@@ -21,6 +21,9 @@ class WordsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // start fetching the data now?
+    context.read<Counter>().fetchItems();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Words & Phrases'),

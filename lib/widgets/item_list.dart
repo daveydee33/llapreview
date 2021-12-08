@@ -41,7 +41,12 @@ class ItemCard extends StatelessWidget {
       child: Column(
         children: [
           ListTile(
-            leading: Icon(Icons.arrow_drop_down_circle),
+            leading: const Icon(
+              // Icons.play_arrow_rounded,
+              // Icons.play_circle_outlined,
+              Icons.play_circle_rounded,
+              size: 50,
+            ),
             title: Text('${item['title']}'),
             subtitle: Text(
               '${item['description']}',
