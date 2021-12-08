@@ -4,6 +4,8 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
+  - audio_session (0.0.1):
+    - Flutter
   - cloud_firestore (2.5.0):
     - Firebase/Firestore (= 8.8.0)
     - firebase_core
@@ -76,6 +78,8 @@ PODS:
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.7.0)
+  - just_audio (0.0.1):
+    - Flutter
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -88,12 +92,14 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - audio_session (from `.symlinks/plugins/audio_session/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - FirebaseFirestore (from `https://github.com/invertase/firestore-ios-sdk-frameworks.git`, tag `8.8.0`)
   - Flutter (from `Flutter`)
   - google_sign_in (from `.symlinks/plugins/google_sign_in/ios`)
+  - just_audio (from `.symlinks/plugins/just_audio/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
   - sign_in_with_apple (from `.symlinks/plugins/sign_in_with_apple/ios`)
 
@@ -113,6 +119,8 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
+  audio_session:
+    :path: ".symlinks/plugins/audio_session/ios"
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
   firebase_auth:
@@ -126,6 +134,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   google_sign_in:
     :path: ".symlinks/plugins/google_sign_in/ios"
+  just_audio:
+    :path: ".symlinks/plugins/just_audio/ios"
   path_provider_ios:
     :path: ".symlinks/plugins/path_provider_ios/ios"
   sign_in_with_apple:
@@ -138,6 +148,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
+  audio_session: 4f3e461722055d21515cf3261b64c973c062f345
   cloud_firestore: d608f7d69772cb3edd8145e1d328ecd32428c96a
   Firebase: 629510f1a9ddb235f3a7c5c8ceb23ba887f0f814
   firebase_auth: 0b7168e2db1bff6e5b40a7dc268447b8dedb59c1
@@ -153,6 +164,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 684ee790a24f73ebb2d1d966e9711c203f2a4237
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
+  just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   path_provider_ios: 7d7ce634493af4477d156294792024ec3485acd5
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
