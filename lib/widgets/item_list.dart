@@ -68,7 +68,12 @@ class ItemCard extends StatelessWidget {
 
     var test = Column(
         children: examples
-            .map((ex) => Text('${ex['title']} ::: ${ex['description']}'))
+            .map((ex) => Container(
+                padding: EdgeInsets.only(top: 10),
+                child: Text(
+                  '${ex['title']} ~ ${ex['description']}',
+                  style: TextStyle(fontSize: 18),
+                )))
             .toList());
 
     return test;
@@ -90,25 +95,37 @@ class ItemCard extends StatelessWidget {
               iconSize: 50,
               onPressed: () => playSound('${item['title']}'),
             ),
-            title: Text('${item['title']}'),
+            title: Text(
+              '${item['title']}',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
+            ),
             subtitle: Text(
               '${item['description']}',
-              style: TextStyle(color: Colors.white.withOpacity(0.6)),
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.6),
+                fontSize: 24.0,
+              ),
             ),
           ),
           Container(
             // margin: EdgeInsets.all(20.0),
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(15.0),
             // decoration: BoxDecoration(
             //   border: Border.all(color: Colors.grey),
             // ),
-            child: Image.asset('assets/temp/temp1.jpeg'),
+            child: Image.asset('assets/temp/temp1.jpeg', width: 300),
           ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(10.0),
             child: Text(
               '${item['details']}',
-              style: TextStyle(color: Colors.white.withOpacity(0.6)),
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.6),
+                fontSize: 14,
+              ),
             ),
           ),
           Padding(
