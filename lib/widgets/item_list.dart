@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:llapreview/services/services.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // class PlaySound extends StatefulWidget {
 //   const PlaySound({Key? key}) : super(key: key);
@@ -70,7 +71,7 @@ class ItemCard extends StatelessWidget {
         children: examples
             .map((ex) => ListTile(
                   leading: IconButton(
-                    icon: Icon(Icons.play_circle_rounded),
+                    icon: Icon(FontAwesomeIcons.solidPlayCircle),
                     onPressed: () {},
                   ),
                   title: Text('${ex['title']}'),
@@ -92,7 +93,7 @@ class ItemCard extends StatelessWidget {
             leading: IconButton(
               // Icons.play_arrow_rounded,
               // Icons.play_circle_outlined,
-              icon: const Icon(Icons.play_circle_rounded),
+              icon: const Icon(FontAwesomeIcons.solidPlayCircle),
               tooltip: 'Play sound',
               iconSize: 50,
               onPressed: () => playSound('${item['title']}'),

@@ -82,7 +82,7 @@ class StartPage extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: state.nextPage,
                 label: const Text("Let's go!"),
-                icon: const Icon(Icons.poll),
+                icon: const Icon(FontAwesomeIcons.rocket),
               )
             ],
           )
