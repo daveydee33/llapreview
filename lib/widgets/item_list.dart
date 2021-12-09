@@ -68,12 +68,14 @@ class ItemCard extends StatelessWidget {
 
     var test = Column(
         children: examples
-            .map((ex) => Container(
-                padding: EdgeInsets.only(top: 10),
-                child: Text(
-                  '${ex['title']} ~ ${ex['description']}',
-                  style: TextStyle(fontSize: 18),
-                )))
+            .map((ex) => ListTile(
+                  leading: IconButton(
+                    icon: Icon(Icons.play_circle_rounded),
+                    onPressed: () {},
+                  ),
+                  title: Text('${ex['title']}'),
+                  subtitle: Text('${ex['description']}'),
+                ))
             .toList());
 
     return test;
@@ -90,14 +92,14 @@ class ItemCard extends StatelessWidget {
             leading: IconButton(
               // Icons.play_arrow_rounded,
               // Icons.play_circle_outlined,
-              icon: Icon(Icons.play_circle_rounded),
+              icon: const Icon(Icons.play_circle_rounded),
               tooltip: 'Play sound',
               iconSize: 50,
               onPressed: () => playSound('${item['title']}'),
             ),
             title: Text(
               '${item['title']}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 30,
               ),
@@ -118,20 +120,26 @@ class ItemCard extends StatelessWidget {
             // ),
             child: Image.asset('assets/temp/temp1.jpeg', width: 300),
           ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(
-              '${item['details']}',
-              style: TextStyle(
-                color: Colors.white.withOpacity(0.6),
-                fontSize: 14,
+          Flex(
+            direction: Axis.horizontal,
+            children: [
+              Flexible(
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Text(
+                    '${item['details']}',
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.6),
+                      fontSize: 14,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: itemExamples(item['examples']),
-          ),
+          itemExamples(item['examples']),
           ButtonBar(
             alignment: MainAxisAlignment.start,
             children: [

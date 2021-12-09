@@ -31,11 +31,6 @@ class WordsScreen extends StatelessWidget {
       ),
       body: ItemList(),
       bottomNavigationBar: const BottomNavBar(),
-      floatingActionButton: FloatingActionButton(
-        /// Calls `context.read` instead of `context.watch` so that it does not rebuild
-        /// when [Counter] changes.
-        onPressed: () => context.read<Counter>().fetchItems(),
-      ),
     );
   }
 }
