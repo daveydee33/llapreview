@@ -59,6 +59,22 @@ class ItemCard extends StatelessWidget {
     player.play();
   }
 
+  Widget itemExamples(List<dynamic> examples) {
+    // for each in Item, return a Text ('key : value');
+    // return Text(item.toString());
+    if (examples.isEmpty) {
+      return Text('.');
+    }
+
+    var test = Column(
+        children: examples
+            .map((ex) => Text('${ex['title']} ::: ${ex['description']}'))
+            .toList());
+
+    return test;
+    // return new Row(children: blah.map((item) => new Text(item)).toList());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -77,7 +93,7 @@ class ItemCard extends StatelessWidget {
             title: Text('${item['title']}'),
             subtitle: Text(
               '${item['description']}',
-              style: TextStyle(color: Colors.black.withOpacity(0.6)),
+              style: TextStyle(color: Colors.white.withOpacity(0.6)),
             ),
           ),
           Container(
@@ -92,8 +108,12 @@ class ItemCard extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               '${item['details']}',
-              style: TextStyle(color: Colors.black.withOpacity(0.6)),
+              style: TextStyle(color: Colors.white.withOpacity(0.6)),
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: itemExamples(item['examples']),
           ),
           ButtonBar(
             alignment: MainAxisAlignment.start,
