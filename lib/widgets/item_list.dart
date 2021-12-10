@@ -4,25 +4,6 @@ import 'package:llapreview/services/services.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-// class PlaySound extends StatefulWidget {
-//   const PlaySound({Key? key}) : super(key: key);
-
-//   @override
-//   _PlaySoundState createState() => _PlaySoundState();
-// }
-
-// class _PlaySoundState extends State<PlaySound> {
-//   @override
-//   Widget build(BuildContext context) {
-//     final player = AudioPlayer();
-//     // var duration = await player.setAsset('audio/A/acara.mp3');
-//     // print('!!!! $duration');
-//     player.play();
-
-//     return Container();
-//   }
-// }
-
 class ItemList extends StatelessWidget {
   const ItemList({Key? key}) : super(key: key);
 
@@ -42,9 +23,6 @@ class ItemList extends StatelessWidget {
           ),
         );
       },
-      // scrollDirection: Axis.horizontal,
-      // primary: true, /// ???
-      // shrinkWrap: ,
     );
   }
 }
@@ -61,26 +39,21 @@ class ItemCard extends StatelessWidget {
   }
 
   Widget itemExamples(List<dynamic> examples) {
-    // for each in Item, return a Text ('key : value');
-    // return Text(item.toString());
-    if (examples.isEmpty) {
-      return Text('.');
-    }
-
-    var test = Column(
-        children: examples
-            .map((ex) => ListTile(
-                  leading: IconButton(
-                    icon: Icon(FontAwesomeIcons.solidPlayCircle),
-                    onPressed: () {},
-                  ),
-                  title: Text('${ex['title']}'),
-                  subtitle: Text('${ex['description']}'),
-                ))
-            .toList());
-
-    return test;
-    // return new Row(children: blah.map((item) => new Text(item)).toList());
+    if (examples.isEmpty) return const Text('');
+    return Column(
+      children: examples
+          .map(
+            (ex) => ListTile(
+              leading: IconButton(
+                icon: const Icon(FontAwesomeIcons.solidPlayCircle),
+                onPressed: () {},
+              ),
+              title: Text('${ex['title']}'),
+              subtitle: Text('${ex['description']}'),
+            ),
+          )
+          .toList(),
+    );
   }
 
   @override
@@ -91,8 +64,6 @@ class ItemCard extends StatelessWidget {
         children: [
           ListTile(
             leading: IconButton(
-              // Icons.play_arrow_rounded,
-              // Icons.play_circle_outlined,
               icon: const Icon(FontAwesomeIcons.solidPlayCircle),
               tooltip: 'Play sound',
               iconSize: 50,
