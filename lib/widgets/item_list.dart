@@ -32,9 +32,46 @@ class ItemCard extends StatelessWidget {
 
   ItemCard(this.item);
 
-  void playSound(String filename) async {
+  // void playSound(String title) async {
+  //   final player = AudioPlayer();
+  //   await player.setAsset('assets/audio/A/${title}.mp3');
+  //   player.play();
+  // }
+
+  // void playSoundMultipleWeb(String title) async {
+  //   final player = AudioPlayer();
+  //   // i think this method is slow because it waits for all 4 before starting to play... ?
+  //   await player.setAudioSource(
+  //     ConcatenatingAudioSource(
+  //       useLazyPreparation: false,
+  //       children: [
+  //         // AudioSource.uri(Uri.parse('asset:///assets/audio/A/${title}.mp3')),
+  //         AudioSource.uri(
+  //             Uri.parse('https://lla-audio.s3.amazonaws.com/A/${title}.mp3')),
+  //         AudioSource.uri(
+  //             Uri.parse('https://lla-audio.s3.amazonaws.com/B/${title}.mp3')),
+  //         AudioSource.uri(
+  //             Uri.parse('https://lla-audio.s3.amazonaws.com/C/${title}.mp3')),
+  //         AudioSource.uri(
+  //             Uri.parse('https://lla-audio.s3.amazonaws.com/D/${title}.mp3')),
+  //       ],
+  //     ),
+  //   );
+  //   player.play();
+  // }
+
+  void playSoundMultipleAssets(String title) async {
     final player = AudioPlayer();
-    await player.setAsset('assets/audio/A/${filename}.mp3');
+    // i think this method is slow because it waits for all 4 before starting to play... ?
+    await player.setAudioSource(
+      ConcatenatingAudioSource(
+        useLazyPreparation: false,
+        children: [
+          AudioSource.uri(Uri.parse('asset:///assets/audio/A/${title}.mp3')),
+          AudioSource.uri(Uri.parse('asset:///assets/audio/B/${title}.mp3')),
+        ],
+      ),
+    );
     player.play();
   }
 
@@ -67,7 +104,7 @@ class ItemCard extends StatelessWidget {
               icon: const Icon(FontAwesomeIcons.solidPlayCircle),
               tooltip: 'Play sound',
               iconSize: 50,
-              onPressed: () => playSound('${item['title']}'),
+              onPressed: () => playSoundMultipleAssets('${item['title']}'),
             ),
             title: Text(
               '${item['title']}',
