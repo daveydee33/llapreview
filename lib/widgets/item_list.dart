@@ -62,16 +62,19 @@ class ItemCard extends StatelessWidget {
 
   void playSoundMultipleAssets(String title) async {
     final player = AudioPlayer();
-    // i think this method is slow because it waits for all 4 before starting to play... ?
-    await player.setAudioSource(
-      ConcatenatingAudioSource(
-        useLazyPreparation: false,
-        children: [
-          AudioSource.uri(Uri.parse('asset:///assets/audio/A/${title}.mp3')),
-          AudioSource.uri(Uri.parse('asset:///assets/audio/B/${title}.mp3')),
-        ],
-      ),
-    );
+
+    try {
+      ConcatenatingAudioSource audios = ConcatenatingAudioSource(children: []);
+      audios.add(
+          AudioSource.uri(Uri.parse('asset:///assets/audio/B/${title}.mp3')));
+      audios.add(
+          AudioSource.uri(Uri.parse('asset:///assets/audio/A/${title}.mp3')));
+      await player.setAudioSource(audios);
+    } catch (e) {
+      print('ERROR adding Audio Source.');
+      print(e);
+    }
+
     player.play();
   }
 
