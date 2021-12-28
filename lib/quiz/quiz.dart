@@ -70,7 +70,10 @@ class StartPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(quiz.title, style: Theme.of(context).textTheme.headline4),
+          Text(
+            quiz.title,
+            style: Theme.of(context).textTheme.headline4,
+          ),
           const Divider(),
           Expanded(child: Text(quiz.description)),
           ButtonBar(
@@ -78,8 +81,8 @@ class StartPage extends StatelessWidget {
             children: <Widget>[
               ElevatedButton.icon(
                 onPressed: state.nextPage,
-                label: const Text('Start Quiz!'),
-                icon: const Icon(Icons.poll),
+                label: const Text("Let's go!"),
+                icon: const Icon(FontAwesomeIcons.rocket),
               )
             ],
           )

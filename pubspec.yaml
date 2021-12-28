@@ -23,6 +23,7 @@ dependencies:
   provider: 6.0.1
   rxdart: 0.27.2
   json_annotation: 4.3.0
+  just_audio: ^0.9.18
 
 dev_dependencies:
   flutter_test:
@@ -42,3 +43,8 @@ flutter:
     - assets/covers/
     - assets/congrats.gif
     - assets/temp/
+    - assets/audio/
+    - assets/audio/A/
+    - assets/audio/B/
+    # - assets/audio/C/
+    # - assets/audio/D/

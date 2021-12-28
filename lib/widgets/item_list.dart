@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:llapreview/services/services.dart';
-import '../main.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ItemList extends StatelessWidget {
   const ItemList({Key? key}) : super(key: key);
@@ -22,9 +23,6 @@ class ItemList extends StatelessWidget {
           ),
         );
       },
-      // scrollDirection: Axis.horizontal,
-      // primary: true, /// ???
-      // shrinkWrap: ,
     );
   }
 }
@@ -34,6 +32,70 @@ class ItemCard extends StatelessWidget {
 
   ItemCard(this.item);
 
+  // void playSound(String title) async {
+  //   final player = AudioPlayer();
+  //   await player.setAsset('assets/audio/A/${title}.mp3');
+  //   player.play();
+  // }
+
+  // void playSoundMultipleWeb(String title) async {
+  //   final player = AudioPlayer();
+  //   // i think this method is slow because it waits for all 4 before starting to play... ?
+  //   await player.setAudioSource(
+  //     ConcatenatingAudioSource(
+  //       useLazyPreparation: false,
+  //       children: [
+  //         // AudioSource.uri(Uri.parse('asset:///assets/audio/A/${title}.mp3')),
+  //         AudioSource.uri(
+  //             Uri.parse('https://lla-audio.s3.amazonaws.com/A/${title}.mp3')),
+  //         AudioSource.uri(
+  //             Uri.parse('https://lla-audio.s3.amazonaws.com/B/${title}.mp3')),
+  //         AudioSource.uri(
+  //             Uri.parse('https://lla-audio.s3.amazonaws.com/C/${title}.mp3')),
+  //         AudioSource.uri(
+  //             Uri.parse('https://lla-audio.s3.amazonaws.com/D/${title}.mp3')),
+  //       ],
+  //     ),
+  //   );
+  //   player.play();
+  // }
+
+  void playSoundMultipleAssets(String title) async {
+    final player = AudioPlayer();
+
+    try {
+      ConcatenatingAudioSource audios = ConcatenatingAudioSource(children: []);
+      audios.add(
+          AudioSource.uri(Uri.parse('asset:///assets/audio/B/${title}.mp3')));
+      audios.add(
+          AudioSource.uri(Uri.parse('asset:///assets/audio/A/${title}.mp3')));
+      await player.setAudioSource(audios);
+    } catch (e) {
+      print('ERROR adding Audio Source.');
+      print(e);
+    }
+
+    player.play();
+  }
+
+  Widget itemExamples(List<dynamic> examples) {
+    if (examples.isEmpty) return const Text('');
+    return Column(
+      children: examples
+          .map(
+            (ex) => ListTile(
+              leading: IconButton(
+                icon: const Icon(FontAwesomeIcons.solidPlayCircle),
+                onPressed: () {},
+              ),
+              title: Text('${ex['title']}'),
+              subtitle: Text('${ex['description']}'),
+            ),
+          )
+          .toList(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -41,28 +103,55 @@ class ItemCard extends StatelessWidget {
       child: Column(
         children: [
           ListTile(
-            leading: Icon(Icons.arrow_drop_down_circle),
-            title: Text('${item['title']}'),
+            leading: IconButton(
+              icon: const Icon(FontAwesomeIcons.solidPlayCircle),
+              tooltip: 'Play sound',
+              iconSize: 50,
+              onPressed: () => playSoundMultipleAssets('${item['title']}'),
+            ),
+            title: Text(
+              '${item['title']}',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
+            ),
             subtitle: Text(
               '${item['description']}',
-              style: TextStyle(color: Colors.black.withOpacity(0.6)),
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.6),
+                fontSize: 24.0,
+              ),
             ),
           ),
           Container(
             // margin: EdgeInsets.all(20.0),
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(15.0),
             // decoration: BoxDecoration(
             //   border: Border.all(color: Colors.grey),
             // ),
-            child: Image.asset('assets/temp/temp1.jpeg'),
+            child: Image.asset('assets/temp/temp1.jpeg', width: 300),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              '${item['details']}',
-              style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            ),
+          Flex(
+            direction: Axis.horizontal,
+            children: [
+              Flexible(
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Text(
+                    '${item['details']}',
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.6),
+                      fontSize: 14,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                  ),
+                ),
+              ),
+            ],
           ),
+          itemExamples(item['examples']),
           ButtonBar(
             alignment: MainAxisAlignment.start,
             children: [

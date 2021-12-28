@@ -21,6 +21,9 @@ class WordsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // start fetching the data now?
+    context.read<Counter>().fetchItems();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Words & Phrases'),
@@ -28,11 +31,6 @@ class WordsScreen extends StatelessWidget {
       ),
       body: ItemList(),
       bottomNavigationBar: const BottomNavBar(),
-      floatingActionButton: FloatingActionButton(
-        /// Calls `context.read` instead of `context.watch` so that it does not rebuild
-        /// when [Counter] changes.
-        onPressed: () => context.read<Counter>().fetchItems(),
-      ),
     );
   }
 }
