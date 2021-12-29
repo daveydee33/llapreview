@@ -1,6 +1,7 @@
 import 'package:http/http.dart' show Client;
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
+import 'package:llapreview/services/models.dart';
 
 /// Mix-in [DiagnosticableTreeMixin] to have access to [debugFillProperties] for the devtool
 // ignore: prefer_mixin
@@ -38,7 +39,8 @@ class Counter with ChangeNotifier, DiagnosticableTreeMixin {
       final res = await client.get(
           Uri.parse('http://localhost:4001/v1/collections?limit=10&page=1'));
       final response = json.decode(res.body);
-      collections = response['results']; // or  // items = resItems;
+      var responseResults = response['results']; // or  // items = resItems;
+      collections = responseResults.map((d) => Collection.fromJson(d)).toList();
       notifyListeners();
     } catch (e) {
       print('Error fetching Items'); // API server offline, etc.
