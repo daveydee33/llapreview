@@ -90,6 +90,8 @@ class ItemCard extends StatelessWidget {
               ),
               title: Text('${ex['title']}'),
               subtitle: Text('${ex['description']}'),
+              horizontalTitleGap: 8,
+              visualDensity: VisualDensity(horizontal: 0, vertical: -4),
             ),
           )
           .toList(),
@@ -151,26 +153,47 @@ class ItemCard extends StatelessWidget {
               ),
             ],
           ),
-          itemExamples(item['examples']),
+          itemExamples(item[
+              'examples']), // TODO: refactor this to be a separate component.  review YouTube video.  https://www.youtube.com/watch?v=IOyq-eTRhvo
           ButtonBar(
-            alignment: MainAxisAlignment.start,
+            alignment: MainAxisAlignment.end,
             children: [
-              FlatButton(
+              // TODO:  break this into a separate widget
+              IconButton(
                 onPressed: () {
-                  // Perform some action
+                  // TODO: there's probably a better method to do this.  I had to add `listen: false` to allow this to work here.
+                  Report report = Provider.of<Report>(context, listen: false);
+                  List completed = report.favorites;
+                  if (completed.contains('${item['id']}')) {
+                    FirestoreService().unsetFavorite('${item['id']}');
+                  } else {
+                    FirestoreService().setFavorite('${item['id']}');
+                  }
+                  // TODO
                 },
-                child: const Text('ACTION 1'),
-              ),
-              FlatButton(
-                onPressed: () {
-                  // Perform some action
-                },
-                child: const Text('ACTION 2'),
+                icon: Favorite(itemId: '${item['id']}'),
               ),
             ],
           ),
         ],
       ),
     );
+  }
+}
+
+class Favorite extends StatelessWidget {
+  final String itemId;
+
+  const Favorite({Key? key, required this.itemId}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Report report = Provider.of<Report>(context);
+    List completed = report.favorites;
+    if (completed.contains(itemId)) {
+      return const Icon(FontAwesomeIcons.solidStar, color: Colors.yellow);
+    } else {
+      return const Icon(FontAwesomeIcons.star, color: Colors.grey);
+    }
   }
 }

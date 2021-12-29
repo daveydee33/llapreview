@@ -49,4 +49,26 @@ class FirestoreService {
 
     return ref.set(data, SetOptions(merge: true));
   }
+
+  /// set Favorite
+  Future<void> setFavorite(id) {
+    var user = AuthService().user!;
+    var ref = _db.collection('reports').doc(user.uid);
+    var data = {
+      'favorites': FieldValue.arrayUnion(['$id'])
+    };
+
+    return ref.set(data, SetOptions(merge: true));
+  }
+
+  /// unset Favorite
+  Future<void> unsetFavorite(id) {
+    var user = AuthService().user!;
+    var ref = _db.collection('reports').doc(user.uid);
+    var data = {
+      'favorites': FieldValue.arrayRemove(['$id'])
+    };
+
+    return ref.set(data, SetOptions(merge: true));
+  }
 }
