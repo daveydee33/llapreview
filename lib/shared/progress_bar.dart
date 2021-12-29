@@ -96,3 +96,50 @@ class TopicProgress extends StatelessWidget {
     }
   }
 }
+
+class CollectionProgress extends StatelessWidget {
+  const CollectionProgress({Key? key, required this.collection})
+      : super(key: key);
+
+  final Collection collection;
+
+  @override
+  Widget build(BuildContext context) {
+    Report report = Provider.of<Report>(context);
+    return Row(
+      children: [
+        _progressCount(report, collection),
+        Expanded(
+          child: AnimatedProgressbar(
+              value: _calculateProgress(collection, report), height: 8),
+        ),
+      ],
+    );
+  }
+
+  Widget _progressCount(Report report, Collection collection) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8),
+      // child: Text(
+      //   '${report.topics[topic.id]?.length ?? 0} / ${topic.quizzes.length}',
+      //   style: const TextStyle(fontSize: 10, color: Colors.grey),
+      // ),
+      child: Text(
+        '7 / 10',
+        style: const TextStyle(fontSize: 10, color: Colors.grey),
+      ),
+    );
+  }
+
+  double _calculateProgress(Collection collection, Report report) {
+    try {
+      // int totalQuizzes = topic.quizzes.length;
+      // int completedQuizzes = report.topics[topic.id].length;
+      int completedQuizzes = 7;
+      int totalQuizzes = 10;
+      return completedQuizzes / totalQuizzes;
+    } catch (err) {
+      return 0.0;
+    }
+  }
+}

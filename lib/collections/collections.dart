@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:llapreview/shared/shared.dart';
 import 'package:provider/provider.dart';
-import 'package:llapreview/services/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:llapreview/shared/shared.dart';
+import 'package:llapreview/services/services.dart';
 
 class CollectionsScreen extends StatelessWidget {
   const CollectionsScreen({Key? key}) : super(key: key);
@@ -63,11 +63,12 @@ class CollectionItem extends StatelessWidget {
             Flexible(
               flex: 3,
               child: SizedBox(
-                child: Image.asset(
-                  // 'assets/covers/${collection.img}',
-                  'assets/covers/default-cover.png',
-                  fit: BoxFit.contain,
-                ),
+                // child: Image.asset(
+                //   // 'assets/covers/${collection.img}',
+                //   'assets/covers/default-cover.png',
+                //   fit: BoxFit.contain,
+                // ),
+                child: Placeholder(),
               ),
             ),
             Flexible(
@@ -75,16 +76,18 @@ class CollectionItem extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Text(
                   collection.title,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
-                    height: 1.5,
+                    height: 1.1,
                     fontWeight: FontWeight.bold,
                   ),
                   overflow: TextOverflow.fade,
-                  softWrap: false,
+                  // overflow: TextOverflow.ellipsis,
+                  softWrap: true,
                 ),
               ),
             ),
-            // Flexible(child: TopicProgress(topic: topic)),
+            Flexible(child: CollectionProgress(collection: collection)),
           ],
         ),
       ),
