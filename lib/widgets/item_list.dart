@@ -90,6 +90,8 @@ class ItemCard extends StatelessWidget {
               ),
               title: Text('${ex['title']}'),
               subtitle: Text('${ex['description']}'),
+              horizontalTitleGap: 8,
+              visualDensity: VisualDensity(horizontal: 0, vertical: -4),
             ),
           )
           .toList(),
@@ -151,26 +153,44 @@ class ItemCard extends StatelessWidget {
               ),
             ],
           ),
-          itemExamples(item['examples']),
+          itemExamples(item[
+              'examples']), // TODO: refactor this to be a separate component.  review YouTube video.  https://www.youtube.com/watch?v=IOyq-eTRhvo
           ButtonBar(
-            alignment: MainAxisAlignment.start,
+            alignment: MainAxisAlignment.end,
             children: [
-              FlatButton(
-                onPressed: () {
-                  // Perform some action
-                },
-                child: const Text('ACTION 1'),
-              ),
-              FlatButton(
-                onPressed: () {
-                  // Perform some action
-                },
-                child: const Text('ACTION 2'),
-              ),
+              Favorite(itemId: '${item['id']}'),
             ],
           ),
         ],
       ),
     );
+  }
+}
+
+class Favorite extends StatelessWidget {
+  final String itemId;
+
+  const Favorite({Key? key, required this.itemId}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Report report = Provider.of<Report>(context);
+    List completed = report.favorites;
+
+    if (completed.contains(itemId)) {
+      return IconButton(
+        icon: const Icon(FontAwesomeIcons.solidStar, color: Colors.yellow),
+        onPressed: () {
+          FirestoreService().unsetFavorite(itemId);
+        },
+      );
+    } else {
+      return IconButton(
+        icon: const Icon(FontAwesomeIcons.star, color: Colors.grey),
+        onPressed: () {
+          FirestoreService().setFavorite(itemId);
+        },
+      );
+    }
   }
 }
