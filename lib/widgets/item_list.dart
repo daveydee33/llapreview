@@ -158,21 +158,7 @@ class ItemCard extends StatelessWidget {
           ButtonBar(
             alignment: MainAxisAlignment.end,
             children: [
-              // TODO:  break this into a separate widget
-              IconButton(
-                onPressed: () {
-                  // TODO: there's probably a better method to do this.  I had to add `listen: false` to allow this to work here.
-                  Report report = Provider.of<Report>(context, listen: false);
-                  List completed = report.favorites;
-                  if (completed.contains('${item['id']}')) {
-                    FirestoreService().unsetFavorite('${item['id']}');
-                  } else {
-                    FirestoreService().setFavorite('${item['id']}');
-                  }
-                  // TODO
-                },
-                icon: Favorite(itemId: '${item['id']}'),
-              ),
+              Favorite(itemId: '${item['id']}'),
             ],
           ),
         ],
@@ -190,10 +176,21 @@ class Favorite extends StatelessWidget {
   Widget build(BuildContext context) {
     Report report = Provider.of<Report>(context);
     List completed = report.favorites;
+
     if (completed.contains(itemId)) {
-      return const Icon(FontAwesomeIcons.solidStar, color: Colors.yellow);
+      return IconButton(
+        icon: const Icon(FontAwesomeIcons.solidStar, color: Colors.yellow),
+        onPressed: () {
+          FirestoreService().unsetFavorite(itemId);
+        },
+      );
     } else {
-      return const Icon(FontAwesomeIcons.star, color: Colors.grey);
+      return IconButton(
+        icon: const Icon(FontAwesomeIcons.star, color: Colors.grey),
+        onPressed: () {
+          FirestoreService().setFavorite(itemId);
+        },
+      );
     }
   }
 }
