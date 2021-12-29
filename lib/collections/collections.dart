@@ -10,7 +10,6 @@ class CollectionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<Counter>().fetchCollections(); // start fetching the data now?
-    final collections = context.watch<Counter>().collections;
 
     return Scaffold(
       appBar: AppBar(
@@ -26,16 +25,28 @@ class CollectionsScreen extends StatelessWidget {
           )
         ],
       ),
-      body: GridView.count(
-        primary: false,
-        padding: const EdgeInsets.all(20.0),
-        crossAxisSpacing: 10.0,
-        crossAxisCount: 2,
-        children: collections
-            .map((collection) => CollectionItem(collection: collection))
-            .toList(),
-      ),
+      body: const CollectionList(),
       bottomNavigationBar: const BottomNavBar(),
+    );
+  }
+}
+
+class CollectionList extends StatelessWidget {
+  const CollectionList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // state
+    final collections = context.watch<Counter>().collections;
+
+    return GridView.count(
+      primary: false,
+      padding: const EdgeInsets.all(20.0),
+      crossAxisSpacing: 10.0,
+      crossAxisCount: 2,
+      children: collections
+          .map((collection) => CollectionItem(collection: collection))
+          .toList(),
     );
   }
 }
