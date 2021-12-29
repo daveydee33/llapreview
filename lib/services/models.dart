@@ -1,3 +1,4 @@
+/// After editing this, I need to generate the models.g.dart file with: flutter pub run build_runner build && flutter run
 import 'package:json_annotation/json_annotation.dart';
 part 'models.g.dart';
 
@@ -53,11 +54,53 @@ class Topic {
       {this.id = '',
       this.title = '',
       this.description = '',
-      this.img = 'default.png',
+      this.img = 'default-cover.png',
       this.quizzes = const []});
 
   factory Topic.fromJson(Map<String, dynamic> json) => _$TopicFromJson(json);
   Map<String, dynamic> toJson() => _$TopicToJson(this);
+}
+
+@JsonSerializable()
+class Collection {
+  late final String id;
+  final String title;
+  final String description;
+  final String details;
+  final String img;
+  final List<Item> items;
+
+  Collection(
+      {this.id = '',
+      this.title = '',
+      this.description = '',
+      this.details = '',
+      this.img = 'default.png',
+      this.items = const []});
+
+  factory Collection.fromJson(Map<String, dynamic> json) =>
+      _$CollectionFromJson(json);
+  Map<String, dynamic> toJson() => _$CollectionToJson(this);
+}
+
+@JsonSerializable()
+class Item {
+  late final String id;
+  final String title;
+  final String description;
+  final String details;
+
+  /// TODO: add the rest, and use this model on the Words screen
+
+  Item({
+    this.id = '',
+    this.title = '',
+    this.description = '',
+    this.details = '',
+  });
+
+  factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+  Map<String, dynamic> toJson() => _$ItemToJson(this);
 }
 
 @JsonSerializable()
@@ -74,30 +117,4 @@ class Report {
       this.favorites = const []});
   factory Report.fromJson(Map<String, dynamic> json) => _$ReportFromJson(json);
   Map<String, dynamic> toJson() => _$ReportToJson(this);
-}
-
-class ItemModel {
-  late int id;
-  late String title;
-  // late String description;
-  // late String details;
-  // List<String> audios;
-  // List<String> images;
-  // List examples;
-  // List tags;
-  // List related;
-
-  ItemModel(
-    this.id,
-    this.title,
-    // this.description,
-    // this.details
-  );
-
-  ItemModel.fromJson(Map<String, dynamic> parsedJson) {
-    id = parsedJson['id'];
-    title = parsedJson['title'];
-    // description = parsedJson['attributes']['description'];
-    // details = parsedJson['attributes']['details'];
-  }
 }
