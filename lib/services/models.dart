@@ -68,7 +68,7 @@ class Collection {
   final String description;
   final String details;
   final String img;
-  final List<Item> items;
+  final List<dynamic> items; // TODO: later check if this can be List<Item>
 
   Collection(
       {this.id = '',

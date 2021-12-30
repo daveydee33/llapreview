@@ -120,26 +120,27 @@ class CollectionProgress extends StatelessWidget {
   Widget _progressCount(Report report, Collection collection) {
     return Padding(
       padding: const EdgeInsets.only(left: 8),
-      // child: Text(
-      //   '${report.topics[topic.id]?.length ?? 0} / ${topic.quizzes.length}',
-      //   style: const TextStyle(fontSize: 10, color: Colors.grey),
-      // ),
       child: Text(
-        '7 / 10',
+        // '${report.topics[topic.id]?.length ?? 0} / ${collection.items.length}',
+        '1 / ${collection.items.length}', // TODO:
         style: const TextStyle(fontSize: 10, color: Colors.grey),
       ),
+      // child: Text(
+      //   '7 / 10',
+      //   style: const TextStyle(fontSize: 10, color: Colors.grey),
+      // ),
     );
   }
 
   double _calculateProgress(Collection collection, Report report) {
-    try {
-      // int totalQuizzes = topic.quizzes.length;
-      // int completedQuizzes = report.topics[topic.id].length;
-      int completedQuizzes = 7;
-      int totalQuizzes = 10;
-      return completedQuizzes / totalQuizzes;
-    } catch (err) {
+    int completedItems = 1; // TODO: report.topics[topic.id].length;
+    int totalItems = collection.items.length;
+    final result = completedItems / totalItems;
+    if (result.isInfinite || result.isNaN) {
+      // TODO: this is probably an issue with the data that needs to be fixed.
       return 0.0;
+    } else {
+      return result;
     }
   }
 }

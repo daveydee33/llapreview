@@ -77,10 +77,7 @@ Collection _$CollectionFromJson(Map<String, dynamic> json) => Collection(
       description: json['description'] as String? ?? '',
       details: json['details'] as String? ?? '',
       img: json['img'] as String? ?? 'default.png',
-      items: (json['items'] as List<dynamic>?)
-              ?.map((e) => Item.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
+      items: json['items'] as List<dynamic>? ?? const [],
     );
 
 Map<String, dynamic> _$CollectionToJson(Collection instance) =>
