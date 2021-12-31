@@ -121,8 +121,8 @@ class CollectionProgress extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 8),
       child: Text(
-        // '${report.topics[topic.id]?.length ?? 0} / ${collection.items.length}',
-        '1 / ${collection.items.length}', // TODO:
+        // '${report.topics[topic.id]?.length ?? 0} / ${collection.item_titles.length}',
+        '1 / ${collection.item_titles.length}', // TODO:
         style: const TextStyle(fontSize: 10, color: Colors.grey),
       ),
       // child: Text(
@@ -134,7 +134,7 @@ class CollectionProgress extends StatelessWidget {
 
   double _calculateProgress(Collection collection, Report report) {
     int completedItems = 1; // TODO: report.topics[topic.id].length;
-    int totalItems = collection.items.length;
+    int totalItems = collection.item_titles.length;
     final result = completedItems / totalItems;
     if (result.isInfinite || result.isNaN) {
       // TODO: this is probably an issue with the data that needs to be fixed.

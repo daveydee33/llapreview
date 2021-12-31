@@ -74,12 +74,12 @@ class CollectionItem extends StatelessWidget {
             Flexible(
               flex: 3,
               child: SizedBox(
-                // child: Image.asset(
-                //   // 'assets/covers/${collection.img}',
-                //   'assets/covers/default-cover.png',
-                //   fit: BoxFit.contain,
-                // ),
-                child: Placeholder(),
+                child: Image.asset(
+                  // 'assets/covers/${collection.img}',
+                  'assets/covers/placeholder.png',
+                  fit: BoxFit.contain,
+                ),
+                // child: Placeholder(),
               ),
             ),
             Flexible(
