@@ -1,4 +1,4 @@
-import 'package:llapreview/about/about.dart';
+import 'package:llapreview/collections/collections.dart';
 import 'package:llapreview/profile/profile.dart';
 import 'package:llapreview/login/login.dart';
 import 'package:llapreview/topics/topics.dart';
@@ -10,6 +10,6 @@ var appRoutes = {
   '/login': (context) => const LoginScreen(),
   '/topics': (context) => const TopicsScreen(),
   '/profile': (context) => const ProfileScreen(),
-  '/about': (context) => const AboutScreen(),
+  '/collections': (context) => const CollectionsScreen(),
   '/words': (context) => const WordsScreen(),
 };

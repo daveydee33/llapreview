@@ -20,7 +20,7 @@ class BottomNavBar extends StatelessWidget {
             FontAwesomeIcons.bolt,
             size: 20,
           ),
-          label: 'About',
+          label: 'Collections',
         ),
         BottomNavigationBarItem(
           icon: Icon(
@@ -44,7 +44,7 @@ class BottomNavBar extends StatelessWidget {
             // do nothing
             break;
           case 1:
-            Navigator.pushNamed(context, '/about');
+            Navigator.pushNamed(context, '/collections');
             break;
           case 2:
             Navigator.pushNamed(context, '/profile');

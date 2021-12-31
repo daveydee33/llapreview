@@ -96,3 +96,51 @@ class TopicProgress extends StatelessWidget {
     }
   }
 }
+
+class CollectionProgress extends StatelessWidget {
+  const CollectionProgress({Key? key, required this.collection})
+      : super(key: key);
+
+  final Collection collection;
+
+  @override
+  Widget build(BuildContext context) {
+    Report report = Provider.of<Report>(context);
+    return Row(
+      children: [
+        _progressCount(report, collection),
+        Expanded(
+          child: AnimatedProgressbar(
+              value: _calculateProgress(collection, report), height: 8),
+        ),
+      ],
+    );
+  }
+
+  Widget _progressCount(Report report, Collection collection) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8),
+      child: Text(
+        // '${report.topics[topic.id]?.length ?? 0} / ${collection.item_titles.length}',
+        '1 / ${collection.item_titles.length}', // TODO:
+        style: const TextStyle(fontSize: 10, color: Colors.grey),
+      ),
+      // child: Text(
+      //   '7 / 10',
+      //   style: const TextStyle(fontSize: 10, color: Colors.grey),
+      // ),
+    );
+  }
+
+  double _calculateProgress(Collection collection, Report report) {
+    int completedItems = 1; // TODO: report.topics[topic.id].length;
+    int totalItems = collection.item_titles.length;
+    final result = completedItems / totalItems;
+    if (result.isInfinite || result.isNaN) {
+      // TODO: this is probably an issue with the data that needs to be fixed.
+      return 0.0;
+    } else {
+      return result;
+    }
+  }
+}
