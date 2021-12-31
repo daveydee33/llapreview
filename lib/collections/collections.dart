@@ -72,17 +72,18 @@ class CollectionItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Flexible(
-              flex: 3,
+              flex: 1,
               child: SizedBox(
-                child: Image.asset(
-                  // 'assets/covers/${collection.img}',
-                  'assets/covers/placeholder.png',
-                  fit: BoxFit.contain,
-                ),
-                // child: Placeholder(),
-              ),
+                  // child: Image.asset(
+                  //   // 'assets/covers/${collection.img}',
+                  //   'assets/covers/placeholder.png',
+                  //   fit: BoxFit.contain,
+                  // ),
+                  // child: Placeholder(),
+                  ),
             ),
             Flexible(
+              flex: 3,
               child: Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Text(
@@ -91,6 +92,7 @@ class CollectionItem extends StatelessWidget {
                   style: const TextStyle(
                     height: 1.1,
                     fontWeight: FontWeight.bold,
+                    fontSize: 18,
                   ),
                   overflow: TextOverflow.fade,
                   // overflow: TextOverflow.ellipsis,

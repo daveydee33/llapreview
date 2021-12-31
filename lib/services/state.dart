@@ -37,7 +37,7 @@ class Counter with ChangeNotifier, DiagnosticableTreeMixin {
 
     try {
       final res = await client.get(Uri.parse(
-          'http://localhost:4001/v1/collections?limit=1000&page=1&sortBy=createdAt:desc')); // TODO: change limit and sort
+          'http://localhost:4001/v1/collections?limit=1000&page=1')); // TODO: change limit and sort
       final response = json.decode(res.body);
       var responseResults = response['results']; // or  // items = resItems;
       collections = responseResults.map((d) => Collection.fromJson(d)).toList();
