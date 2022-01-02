@@ -109,6 +109,7 @@ Report _$ReportFromJson(Map<String, dynamic> json) => Report(
       topics: json['topics'] as Map<String, dynamic>? ?? const {},
       total: json['total'] as int? ?? 0,
       favorites: json['favorites'] as List<dynamic>? ?? const [],
+      completed: json['completed'] as List<dynamic>? ?? const [],
     );
 
 Map<String, dynamic> _$ReportToJson(Report instance) => <String, dynamic>{
@@ -116,4 +117,5 @@ Map<String, dynamic> _$ReportToJson(Report instance) => <String, dynamic>{
       'total': instance.total,
       'topics': instance.topics,
       'favorites': instance.favorites,
+      'completed': instance.completed,
     };

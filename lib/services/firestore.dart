@@ -71,4 +71,26 @@ class FirestoreService {
 
     return ref.set(data, SetOptions(merge: true));
   }
+
+  /// set progress complete
+  Future<void> setCompleted(id) {
+    var user = AuthService().user!;
+    var ref = _db.collection('reports').doc(user.uid);
+    var data = {
+      'completed': FieldValue.arrayUnion(['$id'])
+    };
+
+    return ref.set(data, SetOptions(merge: true));
+  }
+
+  /// unset progress complete
+  Future<void> unsetCompleted(id) {
+    var user = AuthService().user!;
+    var ref = _db.collection('reports').doc(user.uid);
+    var data = {
+      'completed': FieldValue.arrayRemove(['$id'])
+    };
+
+    return ref.set(data, SetOptions(merge: true));
+  }
 }

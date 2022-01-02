@@ -159,6 +159,7 @@ class ItemCard extends StatelessWidget {
             alignment: MainAxisAlignment.end,
             children: [
               Favorite(itemId: '${item['id']}'),
+              ProgressStatus(itemId: '${item['id']}'),
             ],
           ),
         ],
@@ -175,9 +176,9 @@ class Favorite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Report report = Provider.of<Report>(context);
-    List completed = report.favorites;
+    List favorites = report.favorites;
 
-    if (completed.contains(itemId)) {
+    if (favorites.contains(itemId)) {
       return IconButton(
         icon: const Icon(FontAwesomeIcons.solidStar, color: Colors.yellow),
         onPressed: () {
@@ -189,6 +190,34 @@ class Favorite extends StatelessWidget {
         icon: const Icon(FontAwesomeIcons.star, color: Colors.grey),
         onPressed: () {
           FirestoreService().setFavorite(itemId);
+        },
+      );
+    }
+  }
+}
+
+class ProgressStatus extends StatelessWidget {
+  final String itemId;
+
+  const ProgressStatus({Key? key, required this.itemId}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Report report = Provider.of<Report>(context);
+    List completed = report.completed;
+
+    if (completed.contains(itemId)) {
+      return IconButton(
+        icon: const Icon(FontAwesomeIcons.checkDouble, color: Colors.green),
+        onPressed: () {
+          FirestoreService().unsetCompleted(itemId);
+        },
+      );
+    } else {
+      return IconButton(
+        icon: const Icon(FontAwesomeIcons.circle, color: Colors.grey),
+        onPressed: () {
+          FirestoreService().setCompleted(itemId);
         },
       );
     }

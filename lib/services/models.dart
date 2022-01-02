@@ -110,12 +110,15 @@ class Report {
   int total;
   Map topics;
   List favorites;
+  List completed;
 
-  Report(
-      {this.uid = '',
-      this.topics = const {},
-      this.total = 0,
-      this.favorites = const []});
+  Report({
+    this.uid = '',
+    this.topics = const {},
+    this.total = 0,
+    this.favorites = const [],
+    this.completed = const [],
+  });
   factory Report.fromJson(Map<String, dynamic> json) => _$ReportFromJson(json);
   Map<String, dynamic> toJson() => _$ReportToJson(this);
 }
