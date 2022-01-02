@@ -158,8 +158,8 @@ class ItemCard extends StatelessWidget {
           ButtonBar(
             alignment: MainAxisAlignment.end,
             children: [
-              Favorite(itemId: '${item['id']}'),
-              ProgressStatus(itemId: '${item['id']}'),
+              Favorite(title: '${item['title']}'),
+              ProgressStatus(title: '${item['title']}'),
             ],
           ),
         ],
@@ -169,27 +169,27 @@ class ItemCard extends StatelessWidget {
 }
 
 class Favorite extends StatelessWidget {
-  final String itemId;
+  final String title;
 
-  const Favorite({Key? key, required this.itemId}) : super(key: key);
+  const Favorite({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Report report = Provider.of<Report>(context);
     List favorites = report.favorites;
 
-    if (favorites.contains(itemId)) {
+    if (favorites.contains(title)) {
       return IconButton(
         icon: const Icon(FontAwesomeIcons.solidStar, color: Colors.yellow),
         onPressed: () {
-          FirestoreService().unsetFavorite(itemId);
+          FirestoreService().unsetFavorite(title);
         },
       );
     } else {
       return IconButton(
         icon: const Icon(FontAwesomeIcons.star, color: Colors.grey),
         onPressed: () {
-          FirestoreService().setFavorite(itemId);
+          FirestoreService().setFavorite(title);
         },
       );
     }
@@ -197,27 +197,27 @@ class Favorite extends StatelessWidget {
 }
 
 class ProgressStatus extends StatelessWidget {
-  final String itemId;
+  final String title;
 
-  const ProgressStatus({Key? key, required this.itemId}) : super(key: key);
+  const ProgressStatus({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Report report = Provider.of<Report>(context);
     List completed = report.completed;
 
-    if (completed.contains(itemId)) {
+    if (completed.contains(title)) {
       return IconButton(
         icon: const Icon(FontAwesomeIcons.checkDouble, color: Colors.green),
         onPressed: () {
-          FirestoreService().unsetCompleted(itemId);
+          FirestoreService().unsetCompleted(title);
         },
       );
     } else {
       return IconButton(
         icon: const Icon(FontAwesomeIcons.circle, color: Colors.grey),
         onPressed: () {
-          FirestoreService().setCompleted(itemId);
+          FirestoreService().setCompleted(title);
         },
       );
     }
