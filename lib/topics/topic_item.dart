@@ -72,8 +72,10 @@ class TopicScreen extends StatelessWidget {
       body: ListView(children: [
         Hero(
           tag: topic.img,
-          child: Image.asset('assets/covers/${topic.img}',
-              width: MediaQuery.of(context).size.width),
+          child: Image.asset(
+            'assets/covers/${topic.img}',
+            width: MediaQuery.of(context).size.width,
+          ),
         ),
         Text(
           topic.title,

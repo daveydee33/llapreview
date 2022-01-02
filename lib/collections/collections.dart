@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:llapreview/shared/shared.dart';
 import 'package:llapreview/services/services.dart';
+import 'package:llapreview/collections/collection.dart';
 
 class CollectionsScreen extends StatelessWidget {
   const CollectionsScreen({Key? key}) : super(key: key);
@@ -57,51 +58,55 @@ class CollectionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: () {
-          // Navigator.of(context).push(
-          //   MaterialPageRoute(
-          //     builder: (BuildContext context) => TopicScreen(topic: topic),
-          //   ),
-          // );
-        },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              flex: 1,
-              child: SizedBox(
-                  // child: Image.asset(
-                  //   // 'assets/covers/${collection.img}',
-                  //   'assets/covers/placeholder.png',
-                  //   fit: BoxFit.contain,
-                  // ),
-                  // child: Placeholder(),
+    return Hero(
+      tag: collection.title,
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) =>
+                    CollectionScreen(collection: collection),
+              ),
+            );
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                flex: 1,
+                child: SizedBox(
+                    // child: Image.asset(
+                    //   // 'assets/covers/${collection.img}',
+                    //   'assets/covers/placeholder.png',
+                    //   fit: BoxFit.contain,
+                    // ),
+                    // child: Placeholder(),
+                    ),
+              ),
+              Flexible(
+                flex: 3,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Text(
+                    collection.title,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      height: 1.1,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                    overflow: TextOverflow.fade,
+                    // overflow: TextOverflow.ellipsis,
+                    softWrap: true,
                   ),
-            ),
-            Flexible(
-              flex: 3,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Text(
-                  collection.title,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    height: 1.1,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                  overflow: TextOverflow.fade,
-                  // overflow: TextOverflow.ellipsis,
-                  softWrap: true,
                 ),
               ),
-            ),
-            Flexible(child: CollectionProgress(collection: collection)),
-          ],
+              Flexible(child: CollectionProgress(collection: collection)),
+            ],
+          ),
         ),
       ),
     );
