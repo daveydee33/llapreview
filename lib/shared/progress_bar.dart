@@ -118,22 +118,27 @@ class CollectionProgress extends StatelessWidget {
   }
 
   Widget _progressCount(Report report, Collection collection) {
+    var count = 0;
+    for (var item in collection.item_titles) {
+      if (report.completed.contains(item)) count++;
+    }
+
     return Padding(
       padding: const EdgeInsets.only(left: 8),
       child: Text(
-        // '${report.topics[topic.id]?.length ?? 0} / ${collection.item_titles.length}',
-        '1 / ${collection.item_titles.length}', // TODO:
+        '$count / ${collection.item_titles.length}',
         style: const TextStyle(fontSize: 10, color: Colors.grey),
       ),
-      // child: Text(
-      //   '7 / 10',
-      //   style: const TextStyle(fontSize: 10, color: Colors.grey),
-      // ),
     );
   }
 
   double _calculateProgress(Collection collection, Report report) {
-    int completedItems = 1; // TODO: report.topics[topic.id].length;
+    var count = 0;
+    for (var item in collection.item_titles) {
+      if (report.completed.contains(item)) count++;
+    }
+
+    int completedItems = count;
     int totalItems = collection.item_titles.length;
     final result = completedItems / totalItems;
     if (result.isInfinite || result.isNaN) {
