@@ -204,20 +204,27 @@ class ProgressStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Report report = Provider.of<Report>(context);
-    List completed = report.completed;
+    Map progress = report.progress;
 
-    if (completed.contains(title)) {
+    if (progress[title] == 2) {
       return IconButton(
         icon: const Icon(FontAwesomeIcons.checkDouble, color: Colors.green),
         onPressed: () {
-          FirestoreService().unsetCompleted(title);
+          FirestoreService().setProgress(title, 0);
+        },
+      );
+    } else if (progress[title] == 1) {
+      return IconButton(
+        icon: Icon(FontAwesomeIcons.checkCircle, color: Colors.yellow[200]),
+        onPressed: () {
+          FirestoreService().setProgress(title, 2);
         },
       );
     } else {
       return IconButton(
         icon: const Icon(FontAwesomeIcons.circle, color: Colors.grey),
         onPressed: () {
-          FirestoreService().setCompleted(title);
+          FirestoreService().setProgress(title, 1);
         },
       );
     }

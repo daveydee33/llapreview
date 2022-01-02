@@ -71,13 +71,14 @@ class Collection {
   final List<dynamic>
       item_titles; // TODO: later check if this can be List<Item>
 
-  Collection(
-      {this.id = '',
-      this.title = '',
-      this.description = '',
-      this.details = '',
-      this.img = 'placeholder.png',
-      this.item_titles = const []});
+  Collection({
+    this.id = '',
+    this.title = '',
+    this.description = '',
+    this.details = '',
+    this.img = 'placeholder.png',
+    this.item_titles = const [],
+  });
 
   factory Collection.fromJson(Map<String, dynamic> json) =>
       _$CollectionFromJson(json);
@@ -111,6 +112,7 @@ class Report {
   Map topics;
   List favorites;
   List completed;
+  Map progress;
 
   Report({
     this.uid = '',
@@ -118,6 +120,7 @@ class Report {
     this.total = 0,
     this.favorites = const [],
     this.completed = const [],
+    this.progress = const {},
   });
   factory Report.fromJson(Map<String, dynamic> json) => _$ReportFromJson(json);
   Map<String, dynamic> toJson() => _$ReportToJson(this);
