@@ -131,7 +131,7 @@ class ItemCard extends StatelessWidget {
             // decoration: BoxDecoration(
             //   border: Border.all(color: Colors.grey),
             // ),
-            child: Image.asset('assets/temp/temp1.jpeg', width: 300),
+            child: Image.asset('assets/temp/temp1.jpeg', width: 150),
           ),
           Flex(
             direction: Axis.horizontal,
