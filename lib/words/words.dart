@@ -10,13 +10,14 @@ class WordsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<Counter>().fetchItems(); // start fetching the data now?
+    final items = context.watch<Counter>().items;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Words & Phrases'),
         backgroundColor: Colors.orange[800],
       ),
-      body: const ItemList(),
+      body: ItemList(items: items),
       bottomNavigationBar: const BottomNavBar(),
     );
   }

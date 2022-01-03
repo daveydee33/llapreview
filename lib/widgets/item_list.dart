@@ -5,13 +5,12 @@ import 'package:just_audio/just_audio.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ItemList extends StatelessWidget {
-  const ItemList({Key? key}) : super(key: key);
+  final List<dynamic> items;
+
+  const ItemList({Key? key, required this.items}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // state
-    final items = context.watch<Counter>().items;
-
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (context, int index) {
