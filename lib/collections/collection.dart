@@ -18,7 +18,7 @@ class CollectionScreen extends StatelessWidget {
 
     List<dynamic> filteredItems = [];
     filteredItems = items
-        .where((item) => collection.item_titles.contains(item['title']))
+        .where((item) => collection.items.contains(item['title']))
         .toList();
 
     return Scaffold(

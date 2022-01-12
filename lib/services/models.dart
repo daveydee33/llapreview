@@ -68,8 +68,7 @@ class Collection {
   final String description;
   final String details;
   final String img;
-  final List<dynamic>
-      item_titles; // TODO: later check if this can be List<Item>
+  final List<dynamic> items; // TODO: later check if this can be List<Item>
 
   Collection({
     this.id = '',
@@ -77,7 +76,7 @@ class Collection {
     this.description = '',
     this.details = '',
     this.img = 'placeholder.png',
-    this.item_titles = const [],
+    this.items = const [],
   });
 
   factory Collection.fromJson(Map<String, dynamic> json) =>
