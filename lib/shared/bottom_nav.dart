@@ -10,93 +10,46 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  var _selectedIndex = 0;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return BottomNavyBar(
       selectedIndex: _selectedIndex,
       showElevation: true, // use this to remove appBar's elevation
+      itemCornerRadius: 24,
+      curve: Curves.easeIn,
       onItemSelected: (index) => setState(() {
         _selectedIndex = index;
         // _pageController.animateToPage(index,
         //     duration: Duration(milliseconds: 300), curve: Curves.ease);
       }),
-      items: [
+      items: <BottomNavyBarItem>[
         BottomNavyBarItem(
-          icon: Icon(Icons.apps),
-          title: Text('Home'),
+          icon: Icon(FontAwesomeIcons.th),
+          title: Text('Learn'),
           activeColor: Colors.red,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-          icon: Icon(Icons.people),
-          title: Text('Users'),
+          icon: Icon(FontAwesomeIcons.book),
+          title: Text('Review'),
           activeColor: Colors.purpleAccent,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-          icon: Icon(Icons.message),
-          title: Text('Messages'),
+          icon: Icon(FontAwesomeIcons.bolt),
+          title: Text('Stats'),
           activeColor: Colors.pink,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
-          icon: Icon(Icons.settings),
-          title: Text('Settings'),
+          icon: Icon(FontAwesomeIcons.userAlt),
+          title: Text('Profile'),
           activeColor: Colors.blue,
           textAlign: TextAlign.center,
         ),
       ],
     );
-
-    // return BottomNavigationBar(
-    //   items: const [
-    //     BottomNavigationBarItem(
-    //       icon: Icon(
-    //         FontAwesomeIcons.graduationCap,
-    //         size: 20,
-    //       ),
-    //       label: 'Topics',
-    //     ),
-    //     BottomNavigationBarItem(
-    //       icon: Icon(
-    //         FontAwesomeIcons.bolt,
-    //         size: 20,
-    //       ),
-    //       label: 'Collections',
-    //     ),
-    //     BottomNavigationBarItem(
-    //       icon: Icon(
-    //         FontAwesomeIcons.userCircle,
-    //         size: 20,
-    //       ),
-    //       label: 'Profile',
-    //     ),
-    //     BottomNavigationBarItem(
-    //       icon: Icon(
-    //         FontAwesomeIcons.book,
-    //         size: 20,
-    //       ),
-    //       label: 'Words & Phrases',
-    //     ),
-    //   ],
-    //   fixedColor: Colors.deepPurple[200],
-    //   onTap: (int idx) {
-    //     switch (idx) {
-    //       case 0:
-    //         // do nothing
-    //         break;
-    //       case 1:
-    //         Navigator.pushNamed(context, '/collections');
-    //         break;
-    //       case 2:
-    //         Navigator.pushNamed(context, '/profile');
-    //         break;
-    //       case 3:
-    //         Navigator.pushNamed(context, '/words');
-    //     }
-    //   },
-    // );
   }
 }
