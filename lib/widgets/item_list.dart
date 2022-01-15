@@ -78,7 +78,7 @@ class ItemCard extends StatelessWidget {
   }
 
   Widget itemExamples(List<dynamic> examples) {
-    if (examples.isEmpty) return const Text('');
+    if (examples.isEmpty) return const SizedBox();
     return Column(
       children: examples
           .map(
@@ -107,7 +107,7 @@ class ItemCard extends StatelessWidget {
             leading: IconButton(
               icon: const Icon(FontAwesomeIcons.solidPlayCircle),
               tooltip: 'Play sound',
-              iconSize: 50,
+              iconSize: 40,
               onPressed: () => playSoundMultipleAssets('${item['title']}'),
             ),
             title: Text(
@@ -126,11 +126,7 @@ class ItemCard extends StatelessWidget {
             ),
           ),
           Container(
-            // margin: EdgeInsets.all(20.0),
-            padding: EdgeInsets.all(15.0),
-            // decoration: BoxDecoration(
-            //   border: Border.all(color: Colors.grey),
-            // ),
+            margin: EdgeInsets.all(15.0),
             child: Image.asset('assets/temp/temp1.jpeg', width: 150),
           ),
           Flex(
