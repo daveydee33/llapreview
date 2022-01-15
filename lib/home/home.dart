@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:llapreview/login/login.dart';
 import 'package:llapreview/shared/shared.dart';
-import 'package:llapreview/topics/topics.dart';
+import 'package:llapreview/collections/collections.dart';
 import 'package:llapreview/services/auth.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
             child: ErrorMessage(),
           );
         } else if (snapshot.hasData) {
-          return const TopicsScreen();
+          return const CollectionsScreen();
         } else {
           return const LoginScreen();
         }

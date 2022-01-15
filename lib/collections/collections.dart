@@ -19,11 +19,11 @@ class CollectionsScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(
-              FontAwesomeIcons.search,
+              FontAwesomeIcons.userCircle,
               color: Colors.white60,
             ),
             onPressed: () => Navigator.pushNamed(context, '/profile'),
-          )
+          ),
         ],
       ),
       body: const CollectionList(),
