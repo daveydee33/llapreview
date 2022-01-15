@@ -18,7 +18,7 @@ class WordsScreen extends StatelessWidget {
         backgroundColor: Colors.orange[800],
       ),
       body: ItemList(items: items),
-      bottomNavigationBar: const BottomNavBar(),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

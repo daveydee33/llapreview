@@ -24,6 +24,7 @@ dependencies:
   rxdart: 0.27.2
   json_annotation: 4.3.0
   just_audio: ^0.9.18
+  bottom_navy_bar: ^6.0.0
 
 dev_dependencies:
   flutter_test:
