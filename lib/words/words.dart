@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:llapreview/shared/shared.dart';
 import 'package:provider/provider.dart';
 import 'package:llapreview/services/services.dart';
 import 'package:llapreview/widgets/item_list.dart';
@@ -18,7 +17,6 @@ class WordsScreen extends StatelessWidget {
         backgroundColor: Colors.orange[800],
       ),
       body: ItemList(items: items),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

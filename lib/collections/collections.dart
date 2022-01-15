@@ -27,7 +27,6 @@ class CollectionsScreen extends StatelessWidget {
         ],
       ),
       body: const CollectionList(),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
