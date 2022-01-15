@@ -118,23 +118,30 @@ class CollectionProgress extends StatelessWidget {
   }
 
   Widget _progressCount(Report report, Collection collection) {
+    var count = 0;
+    for (var item in collection.items) {
+      if (report.progress.containsKey(item) && report.progress[item] == 2)
+        count++;
+    }
+
     return Padding(
       padding: const EdgeInsets.only(left: 8),
       child: Text(
-        // '${report.topics[topic.id]?.length ?? 0} / ${collection.item_titles.length}',
-        '1 / ${collection.item_titles.length}', // TODO:
+        '$count / ${collection.items.length}',
         style: const TextStyle(fontSize: 10, color: Colors.grey),
       ),
-      // child: Text(
-      //   '7 / 10',
-      //   style: const TextStyle(fontSize: 10, color: Colors.grey),
-      // ),
     );
   }
 
   double _calculateProgress(Collection collection, Report report) {
-    int completedItems = 1; // TODO: report.topics[topic.id].length;
-    int totalItems = collection.item_titles.length;
+    var count = 0;
+    for (var item in collection.items) {
+      if (report.progress.containsKey(item) && report.progress[item] == 2)
+        count++;
+    }
+
+    int completedItems = count;
+    int totalItems = collection.items.length;
     final result = completedItems / totalItems;
     if (result.isInfinite || result.isNaN) {
       // TODO: this is probably an issue with the data that needs to be fixed.

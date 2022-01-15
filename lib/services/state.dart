@@ -21,8 +21,8 @@ class Counter with ChangeNotifier, DiagnosticableTreeMixin {
     final client = Client();
 
     try {
-      final res = await client
-          .get(Uri.parse('http://localhost:4001/v1/items?limit=10&page=1'));
+      final res = await client.get(Uri.parse(
+          'https://membox-v7-staging.herokuapp.com/v1/items?limit=1000&page=1')); // TODO: slow performance
       final resItems = json.decode(res.body);
       items = resItems['results']; // or  // items = resItems;
       notifyListeners();
@@ -37,7 +37,7 @@ class Counter with ChangeNotifier, DiagnosticableTreeMixin {
 
     try {
       final res = await client.get(Uri.parse(
-          'http://localhost:4001/v1/collections?limit=1000&page=1')); // TODO: change limit and sort
+          'https://membox-v7-staging.herokuapp.com/v1/collections?limit=1000&page=1')); // TODO: change limit and sort
       final response = json.decode(res.body);
       var responseResults = response['results']; // or  // items = resItems;
       collections = responseResults.map((d) => Collection.fromJson(d)).toList();

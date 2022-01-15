@@ -5,13 +5,12 @@ import 'package:just_audio/just_audio.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ItemList extends StatelessWidget {
-  const ItemList({Key? key}) : super(key: key);
+  final List<dynamic> items;
+
+  const ItemList({Key? key, required this.items}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // state
-    final items = context.watch<Counter>().items;
-
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (context, int index) {
@@ -132,7 +131,7 @@ class ItemCard extends StatelessWidget {
             // decoration: BoxDecoration(
             //   border: Border.all(color: Colors.grey),
             // ),
-            child: Image.asset('assets/temp/temp1.jpeg', width: 300),
+            child: Image.asset('assets/temp/temp1.jpeg', width: 150),
           ),
           Flex(
             direction: Axis.horizontal,
@@ -158,7 +157,8 @@ class ItemCard extends StatelessWidget {
           ButtonBar(
             alignment: MainAxisAlignment.end,
             children: [
-              Favorite(itemId: '${item['id']}'),
+              Favorite(title: '${item['title']}'),
+              ProgressStatus(title: '${item['title']}'),
             ],
           ),
         ],
@@ -168,27 +168,62 @@ class ItemCard extends StatelessWidget {
 }
 
 class Favorite extends StatelessWidget {
-  final String itemId;
+  final String title;
 
-  const Favorite({Key? key, required this.itemId}) : super(key: key);
+  const Favorite({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Report report = Provider.of<Report>(context);
-    List completed = report.favorites;
+    List favorites = report.favorites;
 
-    if (completed.contains(itemId)) {
+    if (favorites.contains(title)) {
       return IconButton(
         icon: const Icon(FontAwesomeIcons.solidStar, color: Colors.yellow),
         onPressed: () {
-          FirestoreService().unsetFavorite(itemId);
+          FirestoreService().unsetFavorite(title);
         },
       );
     } else {
       return IconButton(
         icon: const Icon(FontAwesomeIcons.star, color: Colors.grey),
         onPressed: () {
-          FirestoreService().setFavorite(itemId);
+          FirestoreService().setFavorite(title);
+        },
+      );
+    }
+  }
+}
+
+class ProgressStatus extends StatelessWidget {
+  final String title;
+
+  const ProgressStatus({Key? key, required this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Report report = Provider.of<Report>(context);
+    Map progress = report.progress;
+
+    if (progress[title] == 2) {
+      return IconButton(
+        icon: const Icon(FontAwesomeIcons.checkDouble, color: Colors.green),
+        onPressed: () {
+          FirestoreService().setProgress(title, 0);
+        },
+      );
+    } else if (progress[title] == 1) {
+      return IconButton(
+        icon: Icon(FontAwesomeIcons.checkCircle, color: Colors.yellow[200]),
+        onPressed: () {
+          FirestoreService().setProgress(title, 2);
+        },
+      );
+    } else {
+      return IconButton(
+        icon: const Icon(FontAwesomeIcons.circle, color: Colors.grey),
+        onPressed: () {
+          FirestoreService().setProgress(title, 1);
         },
       );
     }

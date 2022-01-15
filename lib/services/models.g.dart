@@ -77,7 +77,7 @@ Collection _$CollectionFromJson(Map<String, dynamic> json) => Collection(
       description: json['description'] as String? ?? '',
       details: json['details'] as String? ?? '',
       img: json['img'] as String? ?? 'placeholder.png',
-      item_titles: json['item_titles'] as List<dynamic>? ?? const [],
+      items: json['items'] as List<dynamic>? ?? const [],
     );
 
 Map<String, dynamic> _$CollectionToJson(Collection instance) =>
@@ -87,7 +87,7 @@ Map<String, dynamic> _$CollectionToJson(Collection instance) =>
       'description': instance.description,
       'details': instance.details,
       'img': instance.img,
-      'item_titles': instance.item_titles,
+      'items': instance.items,
     };
 
 Item _$ItemFromJson(Map<String, dynamic> json) => Item(
@@ -109,6 +109,8 @@ Report _$ReportFromJson(Map<String, dynamic> json) => Report(
       topics: json['topics'] as Map<String, dynamic>? ?? const {},
       total: json['total'] as int? ?? 0,
       favorites: json['favorites'] as List<dynamic>? ?? const [],
+      completed: json['completed'] as List<dynamic>? ?? const [],
+      progress: json['progress'] as Map<String, dynamic>? ?? const {},
     );
 
 Map<String, dynamic> _$ReportToJson(Report instance) => <String, dynamic>{
@@ -116,4 +118,6 @@ Map<String, dynamic> _$ReportToJson(Report instance) => <String, dynamic>{
       'total': instance.total,
       'topics': instance.topics,
       'favorites': instance.favorites,
+      'completed': instance.completed,
+      'progress': instance.progress,
     };

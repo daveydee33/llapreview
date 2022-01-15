@@ -71,4 +71,14 @@ class FirestoreService {
 
     return ref.set(data, SetOptions(merge: true));
   }
+
+  Future<void> setProgress(item, status) {
+    var user = AuthService().user!;
+    var ref = _db.collection('reports').doc(user.uid);
+    var data = {
+      'progress': {item: status}
+    };
+
+    return ref.set(data, SetOptions(merge: true));
+  }
 }
