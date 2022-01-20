@@ -50,7 +50,6 @@ class TopicsScreen extends StatelessWidget {
               crossAxisCount: 2,
               children: topics.map((topic) => TopicItem(topic: topic)).toList(),
             ),
-            bottomNavigationBar: const BottomNavBar(),
           );
         } else {
           print('ERROR... no topics in firebase');

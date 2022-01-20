@@ -15,7 +15,7 @@ class CollectionsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Collections'),
-        backgroundColor: Colors.orange[800],
+        // backgroundColor: Colors.orange[800],
         actions: [
           IconButton(
             icon: const Icon(
@@ -27,7 +27,6 @@ class CollectionsScreen extends StatelessWidget {
         ],
       ),
       body: const CollectionList(),
-      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

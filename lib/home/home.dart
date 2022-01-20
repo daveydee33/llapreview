@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:llapreview/login/login.dart';
 import 'package:llapreview/shared/shared.dart';
-import 'package:llapreview/topics/topics.dart';
 import 'package:llapreview/services/auth.dart';
+import 'package:llapreview/home/screens_holder.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
             child: ErrorMessage(),
           );
         } else if (snapshot.hasData) {
-          return const TopicsScreen();
+          return ScreensHolder();
         } else {
           return const LoginScreen();
         }
