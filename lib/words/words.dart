@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:llapreview/shared/search_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:llapreview/services/services.dart';
@@ -15,6 +16,7 @@ class _WordsScreenState extends State<WordsScreen> {
   late List allItems;
   List filteredItems = [];
   String query = '';
+  bool showSearch = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +27,26 @@ class _WordsScreenState extends State<WordsScreen> {
       appBar: AppBar(
         title: const Text('Words & Phrases'),
         backgroundColor: Colors.orange[800],
+        actions: [
+          IconButton(
+            icon: const Icon(
+              FontAwesomeIcons.search,
+              color: Colors.white60,
+            ),
+            onPressed: () {
+              setState(() {
+                showSearch = !showSearch;
+              });
+            },
+          )
+        ],
       ),
       body: Column(
         children: [
-          buildSearch(),
+          if (showSearch) buildSearch(),
           Expanded(
             child: ItemList(
-              items: filteredItems,
-            ),
+                items: (query == '' || !showSearch) ? allItems : filteredItems),
           ),
         ],
       ),
@@ -41,7 +55,7 @@ class _WordsScreenState extends State<WordsScreen> {
 
   Widget buildSearch() => SearchWidget(
         text: query,
-        hintText: 'Word or Phrase',
+        hintText: 'search',
         onChanged: searchItems,
       );
 
