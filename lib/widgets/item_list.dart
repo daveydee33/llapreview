@@ -125,10 +125,10 @@ class ItemCard extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.all(15.0),
-            child: Image.asset('assets/temp/temp1.jpeg', width: 150),
-          ),
+          // Container(
+          //   margin: EdgeInsets.all(15.0),
+          //   child: Image.asset('assets/temp/temp1.jpeg', width: 150),
+          // ),
           Flex(
             direction: Axis.horizontal,
             children: [

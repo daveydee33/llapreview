@@ -15,11 +15,11 @@ class CollectionsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Collections'),
-        // backgroundColor: Colors.orange[800],
+        backgroundColor: Colors.orange.shade900,
         actions: [
           IconButton(
             icon: const Icon(
-              FontAwesomeIcons.search,
+              FontAwesomeIcons.user,
               color: Colors.white60,
             ),
             onPressed: () => Navigator.pushNamed(context, '/profile'),
@@ -103,7 +103,9 @@ class CollectionItem extends StatelessWidget {
                   ),
                 ),
               ),
-              Flexible(child: CollectionProgress(collection: collection)),
+              Flexible(
+                child: CollectionProgress(collection: collection),
+              ),
             ],
           ),
         ),

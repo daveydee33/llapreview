@@ -26,7 +26,7 @@ class _WordsScreenState extends State<WordsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Words & Phrases'),
-        backgroundColor: Colors.orange[800],
+        backgroundColor: Colors.orange.shade800,
         actions: [
           IconButton(
             icon: const Icon(
