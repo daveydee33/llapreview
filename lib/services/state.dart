@@ -43,7 +43,7 @@ class Counter with ChangeNotifier, DiagnosticableTreeMixin {
       collections = responseResults.map((d) => Collection.fromJson(d)).toList();
       notifyListeners();
     } catch (e) {
-      print('Error fetching Items'); // API server offline, etc.
+      print('Error fetching Collections'); // API server offline, etc.
       print(e);
     }
   }
