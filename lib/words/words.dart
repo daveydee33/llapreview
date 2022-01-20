@@ -43,7 +43,7 @@ class _WordsScreenState extends State<WordsScreen> {
       ),
       body: Column(
         children: [
-          if (showSearch) buildSearch(),
+          buildSearch(),
           Expanded(
             child: ItemList(
                 items: (query == '' || !showSearch) ? allItems : filteredItems),
@@ -53,10 +53,14 @@ class _WordsScreenState extends State<WordsScreen> {
     );
   }
 
-  Widget buildSearch() => SearchWidget(
-        text: query,
-        hintText: 'search',
-        onChanged: searchItems,
+  Widget buildSearch() => Visibility(
+        child: SearchWidget(
+          text: query,
+          hintText: 'search',
+          onChanged: searchItems,
+        ),
+        visible: showSearch,
+        maintainState: true,
       );
 
   Widget buildBook(Item item) => ListTile(
