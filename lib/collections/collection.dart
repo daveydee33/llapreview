@@ -16,8 +16,9 @@ class CollectionScreen extends StatelessWidget {
         .fetchItems(); // start fetching the data now?  maybe find a better place to fetch this.
     final items = context.watch<Counter>().items;
 
-    List filteredItems =
-        items.where((item) => collection.items.contains(item.title)).toList();
+    List filteredItems = items
+        .where((item) => collection.items.contains(item['title']))
+        .toList();
 
     return Scaffold(
       appBar: AppBar(
