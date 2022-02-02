@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>868955852034-u7n1kuqvvgqgbvttiqmc61kspkcjkhop.apps.googleusercontent.com</string>
+	<string>1028810960976-j1m4r4vnmlv226bqbjmob5hose99eq5k.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.868955852034-u7n1kuqvvgqgbvttiqmc61kspkcjkhop</string>
+	<string>com.googleusercontent.apps.1028810960976-j1m4r4vnmlv226bqbjmob5hose99eq5k</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1028810960976-dd1btdgp22cic6o3fssq1p73r3s4gj7m.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyATmiBijXbfIrC3P4Qs_WSKUzA9CrwFBqg</string>
+	<string>AIzaSyBac4--63zDiKLMyjKXI6Pwolyp2cBRV5A</string>
 	<key>GCM_SENDER_ID</key>
-	<string>868955852034</string>
+	<string>1028810960976</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.bahasabagus.llapreview</string>
 	<key>PROJECT_ID</key>
-	<string>llapreview-dev</string>
+	<string>membox-v7-firebase</string>
 	<key>STORAGE_BUCKET</key>
-	<string>llapreview-dev.appspot.com</string>
+	<string>membox-v7-firebase.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:868955852034:ios:606be2e6937407a513061b</string>
+	<string>1:1028810960976:ios:c91506668fd12196c66155</string>
 </dict>
 </plist>

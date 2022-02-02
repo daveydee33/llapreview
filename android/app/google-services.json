@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "868955852034",
-    "project_id": "llapreview-dev",
-    "storage_bucket": "llapreview-dev.appspot.com"
+    "project_number": "1028810960976",
+    "project_id": "membox-v7-firebase",
+    "storage_bucket": "membox-v7-firebase.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:868955852034:android:bf9a569f337da3ef13061b",
+        "mobilesdk_app_id": "1:1028810960976:android:3f29b822c38c48e4c66155",
         "android_client_info": {
           "package_name": "com.bahasabagus.llapreview"
         }
       },
       "oauth_client": [
         {
-          "client_id": "868955852034-42okcqfu8jen68htvn5gpudjkuo23eim.apps.googleusercontent.com",
+          "client_id": "1028810960976-dd1btdgp22cic6o3fssq1p73r3s4gj7m.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.bahasabagus.llapreview",
@@ -22,24 +22,24 @@
           }
         },
         {
-          "client_id": "868955852034-a637t4609t72ambh2ueraas4ul3mg82d.apps.googleusercontent.com",
+          "client_id": "1028810960976-6ropalmefo6pk1tfadeu2u7en1u83ulu.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC2acg_29716mvtpHjSOyrW6NqjZiA-nIQ"
+          "current_key": "AIzaSyClVVKlS-4QFYPY9NFziHWPyuoB1ihCdL4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "868955852034-a637t4609t72ambh2ueraas4ul3mg82d.apps.googleusercontent.com",
+              "client_id": "1028810960976-6ropalmefo6pk1tfadeu2u7en1u83ulu.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "868955852034-u7n1kuqvvgqgbvttiqmc61kspkcjkhop.apps.googleusercontent.com",
+              "client_id": "1028810960976-j1m4r4vnmlv226bqbjmob5hose99eq5k.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.bahasabagus.llapreview"
