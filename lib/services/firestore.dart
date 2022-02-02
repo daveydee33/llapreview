@@ -27,7 +27,7 @@ class FirestoreService {
   Stream<Report> streamReport() {
     return AuthService().userStream.switchMap((user) {
       if (user != null) {
-        var ref = _db.collection('reports').doc(user.uid);
+        var ref = _db.collection('user-data').doc(user.uid);
         return ref.snapshots().map((doc) => Report.fromJson(doc.data()!));
       } else {
         return Stream.fromIterable([Report()]);
@@ -38,7 +38,7 @@ class FirestoreService {
   /// Updates the current user's report document after completing quiz
   Future<void> updateUserReport(Quiz quiz) {
     var user = AuthService().user!;
-    var ref = _db.collection('reports').doc(user.uid);
+    var ref = _db.collection('user-data').doc(user.uid);
 
     var data = {
       'total': FieldValue.increment(1),
@@ -53,7 +53,7 @@ class FirestoreService {
   /// set Favorite
   Future<void> setFavorite(id) {
     var user = AuthService().user!;
-    var ref = _db.collection('reports').doc(user.uid);
+    var ref = _db.collection('user-data').doc(user.uid);
     var data = {
       'favorites': FieldValue.arrayUnion(['$id'])
     };
@@ -64,7 +64,7 @@ class FirestoreService {
   /// unset Favorite
   Future<void> unsetFavorite(id) {
     var user = AuthService().user!;
-    var ref = _db.collection('reports').doc(user.uid);
+    var ref = _db.collection('user-data').doc(user.uid);
     var data = {
       'favorites': FieldValue.arrayRemove(['$id'])
     };
@@ -74,7 +74,7 @@ class FirestoreService {
 
   Future<void> setProgress(item, status) {
     var user = AuthService().user!;
-    var ref = _db.collection('reports').doc(user.uid);
+    var ref = _db.collection('user-data').doc(user.uid);
     var data = {
       'progress': {item: status}
     };
